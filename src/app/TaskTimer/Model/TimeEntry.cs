@@ -16,19 +16,15 @@ namespace TaskTimer.Model
 
         public long DurationInSeconds()
         {
-            long seconds;
-            if (Stop.Year != 1)
-            {
-                seconds = (Stop.Ticks - Start.Ticks)/TimeSpan.TicksPerSecond;
-                if ((Stop.Ticks - Start.Ticks)%TimeSpan.TicksPerSecond > 0)
-                    seconds++;
-            }
-            else
-            {
-                seconds = (DateTime.Now.Ticks - Start.Ticks)/TimeSpan.TicksPerSecond;
-                if ((DateTime.Now.Ticks - Start.Ticks)%TimeSpan.TicksPerSecond > 0)
-                    seconds++;
-            }
+            var endTime = Stop.Year != 1 ? Stop.Ticks : DateTime.Now.Ticks;
+            return CalcSeconds(endTime);
+        }
+
+        private long CalcSeconds(long endTime)
+        {
+            var seconds = (endTime - Start.Ticks)/TimeSpan.TicksPerSecond;
+            if ((endTime - Start.Ticks)%TimeSpan.TicksPerSecond > 0)
+                seconds++;
             return seconds;
         }
     }
