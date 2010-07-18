@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace TaskTimer.Model
@@ -49,20 +48,16 @@ namespace TaskTimer.Model
 
         public void Start(string taskName)
         {
-            Tasks[Tasks.IndexOf(new Task(taskName))].Start();
+            var task = GetByName(taskName);
+            if (task != null)
+                task.Start();
         }
 
         public void Stop(string taskName)
         {
-            //TODO: quickhack, da gelöschter task nicht mehr gestoppt werden kann
-            try
-            {
-                Tasks[Tasks.IndexOf(new Task(taskName))].Stop();
-            }
-            catch (Exception exception)
-            {
-                Trace.WriteLine(exception.Message);
-            }
+            var task = GetByName(taskName);
+            if (task != null)
+                task.Stop();
         }
     }
 }
