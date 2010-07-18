@@ -29,6 +29,7 @@ namespace TaskTimer
                               filetime.Minute.ToString().PadLeft(2, '0'));
             labelCopyright.Text = AssemblyCopyright;
             labelCompanyName.Text = AssemblyCompany;
+            textBoxDescription.Text = File.ReadAllText("Readme.txt");
         }
 
         #region Assembly Attribute Accessors

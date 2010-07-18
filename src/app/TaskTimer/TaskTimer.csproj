@@ -166,6 +166,9 @@
     <EmbeddedResource Include="TransferTimeForm.resx">
       <DependentUpon>TransferTimeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <Content Include="Readme.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="todo.txt" />
   </ItemGroup>
   <ItemGroup>
