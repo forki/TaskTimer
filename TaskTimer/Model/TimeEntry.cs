@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TaskTimer
+namespace TaskTimer.Model
 {
     internal class TimeEntry
     {

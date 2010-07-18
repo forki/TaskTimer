@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using TaskTimer.Helpers;
+using TaskTimer.Model;
 using TaskTimer.Properties;
 
 namespace TaskTimer

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace TaskTimer
+namespace TaskTimer.Model
 {
     internal class TaskList
     {
