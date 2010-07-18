@@ -5,23 +5,28 @@ namespace TaskTimer.Model
     public class TimeEntry
     {
         public DateTime StartTime { get; private set; }
-        public DateTime Stop { get; set; }
+        public DateTime StopTime { get; private set; }
 
         public TimeEntry()
         {
             StartTime = DateTime.Now;
         }
 
+        public void Stop()
+        {
+            StartTime= DateTime.Now;
+        }
+
         public long DurationInTicks()
         {
-            if (Stop.Year != 1)
-                return Stop.Ticks - StartTime.Ticks;
+            if (StopTime.Year != 1)
+                return StopTime.Ticks - StartTime.Ticks;
             return DateTime.Now.Ticks - StartTime.Ticks;
         }
 
         public long DurationInSeconds()
         {
-            var endTime = Stop.Year != 1 ? Stop.Ticks : DateTime.Now.Ticks;
+            var endTime = StopTime.Year != 1 ? StopTime.Ticks : DateTime.Now.Ticks;
             return CalcSeconds(endTime);
         }
 

@@ -55,7 +55,7 @@ namespace TaskTimer.Model
 
         public void Stop()
         {
-            TimeEntries.Last().Stop = DateTime.Now;
+            TimeEntries.Last().Stop();
             IsActive = false;
         }
 
@@ -78,7 +78,7 @@ namespace TaskTimer.Model
         {
             var seconds =
                 TimeEntries
-                    .Where(timeEntry => timeEntry.StartTime.Date == date.Date || timeEntry.Stop.Date == date.Date)
+                    .Where(timeEntry => timeEntry.StartTime.Date == date.Date || timeEntry.StopTime.Date == date.Date)
                     .Sum(timeEntry => timeEntry.DurationInSeconds());
             return Math.Max(seconds + TimeDifference, 0);
         }
