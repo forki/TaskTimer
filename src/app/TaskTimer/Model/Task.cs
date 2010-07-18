@@ -61,7 +61,7 @@ namespace TaskTimer.Model
 
         public long DurationInSeconds()
         {
-            var seconds = TimeEntries.Sum(timeEntry => timeEntry.DurationInSeconds());
+            var seconds = TimeEntries.Sum(timeEntry => timeEntry.DurationInSeconds);
             return Math.Max(seconds + TimeDifference, 0);
         }
 
@@ -79,7 +79,7 @@ namespace TaskTimer.Model
             var seconds =
                 TimeEntries
                     .Where(timeEntry => timeEntry.StartTime.Date == date.Date || timeEntry.StopTime.Date == date.Date)
-                    .Sum(timeEntry => timeEntry.DurationInSeconds());
+                    .Sum(timeEntry => timeEntry.DurationInSeconds);
             return Math.Max(seconds + TimeDifference, 0);
         }
 
