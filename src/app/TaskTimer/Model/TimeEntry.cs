@@ -2,16 +2,21 @@
 
 namespace TaskTimer.Model
 {
-    internal class TimeEntry
+    public class TimeEntry
     {
-        public DateTime Start { get; set; }
+        public DateTime StartTime { get; private set; }
         public DateTime Stop { get; set; }
+
+        public TimeEntry()
+        {
+            StartTime = DateTime.Now;
+        }
 
         public long DurationInTicks()
         {
             if (Stop.Year != 1)
-                return Stop.Ticks - Start.Ticks;
-            return DateTime.Now.Ticks - Start.Ticks;
+                return Stop.Ticks - StartTime.Ticks;
+            return DateTime.Now.Ticks - StartTime.Ticks;
         }
 
         public long DurationInSeconds()
@@ -22,8 +27,8 @@ namespace TaskTimer.Model
 
         private long CalcSeconds(long endTime)
         {
-            var seconds = (endTime - Start.Ticks)/TimeSpan.TicksPerSecond;
-            if ((endTime - Start.Ticks)%TimeSpan.TicksPerSecond > 0)
+            var seconds = (endTime - StartTime.Ticks)/TimeSpan.TicksPerSecond;
+            if ((endTime - StartTime.Ticks)%TimeSpan.TicksPerSecond > 0)
                 seconds++;
             return seconds;
         }

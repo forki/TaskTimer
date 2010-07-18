@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace TaskTimer.Model
 {
-    internal class Task : IComparable
+    public class Task : IComparable
     {
         public Task(string taskName)
         {
@@ -50,7 +50,6 @@ namespace TaskTimer.Model
         public void Start()
         {
             TimeEntries.Add(new TimeEntry());
-            TimeEntries.Last().Start = DateTime.Now;
             IsActive = true;
         }
 
@@ -79,7 +78,7 @@ namespace TaskTimer.Model
         {
             var seconds =
                 TimeEntries
-                    .Where(timeEntry => timeEntry.Start.Date == date.Date || timeEntry.Stop.Date == date.Date)
+                    .Where(timeEntry => timeEntry.StartTime.Date == date.Date || timeEntry.Stop.Date == date.Date)
                     .Sum(timeEntry => timeEntry.DurationInSeconds());
             return Math.Max(seconds + TimeDifference, 0);
         }

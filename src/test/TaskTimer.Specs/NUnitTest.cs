@@ -1,13 +1,17 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
+using TaskTimer.Model;
 
 namespace TaskTimer.Specs
 {
     [TestFixture]
-    public class NUnitTest
+    public class TimeEntryTest
     {
         [Test]
-        public void CanRunNUnit()
+        public void CreatedTimeEntryShouldHaveStartTimeInitialized()
         {
+            var task = new TimeEntry();
+            Assert.IsTrue(task.StartTime >= DateTime.Now);
         }
     }
 }
