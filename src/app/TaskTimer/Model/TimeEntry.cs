@@ -41,7 +41,7 @@ namespace TaskTimer.Model
 
         public void Stop()
         {
-            StartTime = DateTime.Now;
+            StopTime = DateTime.Now;
         }
     }
 }
