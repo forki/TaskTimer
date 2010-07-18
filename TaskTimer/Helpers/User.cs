@@ -1,6 +1,6 @@
 ﻿using System.Security.Principal;
 
-namespace TaskTimer
+namespace TaskTimer.Helpers
 {
     public class User
     {

@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace TaskTimer
+namespace TaskTimer.Helpers
 {
     public class FileSystemHelper
     {
