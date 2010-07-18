@@ -198,6 +198,7 @@
   </Target>
   -->
   <PropertyGroup>
-    <PostBuildEvent>"C:\Users\jhashagen\Documents\Visual Studio 2008\Projects\Task Timer\Task Timer\bin\Debug\copy_to.bat"</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>
