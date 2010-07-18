@@ -7,6 +7,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gma.UserActivityMonitor", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTimer", "src\app\TaskTimer\TaskTimer.csproj", "{291B5EBE-8D2B-48AE-9F3F-2D4217ED4238}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C8058A7B-BF46-4B60-8F12-6C44A0A7857B}"
+	ProjectSection(SolutionItems) = preProject
+		build.bat = build.bat
+		build.fsx = build.fsx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F03BAD89-AE30-424F-8AC9-2F1A3DA5974E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTimer.Specs", "src\test\TaskTimer.Specs\TaskTimer.Specs.csproj", "{7CE6E387-6AAB-496A-B11B-6F8C82F9DEBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +31,10 @@ Global
 		{291B5EBE-8D2B-48AE-9F3F-2D4217ED4238}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{291B5EBE-8D2B-48AE-9F3F-2D4217ED4238}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{291B5EBE-8D2B-48AE-9F3F-2D4217ED4238}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CE6E387-6AAB-496A-B11B-6F8C82F9DEBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CE6E387-6AAB-496A-B11B-6F8C82F9DEBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CE6E387-6AAB-496A-B11B-6F8C82F9DEBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CE6E387-6AAB-496A-B11B-6F8C82F9DEBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -28,5 +42,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{F52AA97E-180A-40ED-8F2B-09080171D6C7} = {29342FEB-9E7B-4817-9671-98662A339FE9}
 		{291B5EBE-8D2B-48AE-9F3F-2D4217ED4238} = {29342FEB-9E7B-4817-9671-98662A339FE9}
+		{7CE6E387-6AAB-496A-B11B-6F8C82F9DEBE} = {F03BAD89-AE30-424F-8AC9-2F1A3DA5974E}
 	EndGlobalSection
 EndGlobal
