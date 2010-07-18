@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 
-namespace Task_Timer
+namespace TaskTimer
 {
     public partial class Form1 : Form
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Task_Timer
+namespace TaskTimer
 {
     internal class TimeEntry
     {

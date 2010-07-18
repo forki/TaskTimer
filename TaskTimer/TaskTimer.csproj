@@ -8,8 +8,8 @@
     <ProjectGuid>{291B5EBE-8D2B-48AE-9F3F-2D4217ED4238}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Task_Timer</RootNamespace>
-    <AssemblyName>Task Timer</AssemblyName>
+    <RootNamespace>TaskTimer</RootNamespace>
+    <AssemblyName>TaskTimer</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>

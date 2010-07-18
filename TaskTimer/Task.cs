@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Task_Timer
+namespace TaskTimer
 {
     internal class Task : IComparable
     {

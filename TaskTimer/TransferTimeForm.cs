@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Task_Timer
+namespace TaskTimer
 {
     public partial class TransferTimeForm : Form
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Collections;
 
-namespace Task_Timer
+namespace TaskTimer
 {
     class TaskList
     {

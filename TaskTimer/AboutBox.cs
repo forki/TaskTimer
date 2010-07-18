@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace Task_Timer
+namespace TaskTimer
 {
     partial class AboutBox : Form
     {

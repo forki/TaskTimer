@@ -1,4 +1,4 @@
-﻿namespace Task_Timer
+﻿namespace TaskTimer
 {
     partial class AboutBox
     {

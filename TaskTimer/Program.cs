@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Task_Timer
+namespace TaskTimer
 {
     static class Program
     {

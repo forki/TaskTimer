@@ -7,37 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Task_Timer
+namespace TaskTimer
 {
-    public partial class CorrectBookedTimeForm : Form
+    public partial class TaskEntryForm : Form
     {
-        public CorrectBookedTimeForm()
+        public TaskEntryForm()
         {
             InitializeComponent();
         }
 
-        public CorrectBookedTimeForm(long _minutes)
+        public TaskEntryForm(string caption, string taskname)
         {
             InitializeComponent();
-            labelTaskTime.Text += _minutes + " Minute";
-            if (_minutes == 0 || _minutes > 1)
-                labelTaskTime.Text += "n";
+            this.Text = caption;
+            textBoxTaskName.Text = taskname;
         }
 
-        public int TimeCorrection
+        public string Taskname
         {
             get
             {
-                return Convert.ToInt32(numericUpDownCorrection.Value);
+                return textBoxTaskName.Text;
             }
         }
 
-        private void CorrectBookedTimeForm_Load(object sender, EventArgs e)
-        {
-            numericUpDownCorrection.Select(0, 1);
-        }
-
-        private void CorrectBookedTimeForm_KeyPress(object sender, KeyPressEventArgs e)
+        private void TaskEntryForm_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
             {
