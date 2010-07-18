@@ -1,67 +1,56 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace TaskTimer
 {
     public partial class TransferTimeForm : Form
     {
-        private List<String> taskList;
-        private string srcTask;
-        private long duration;
+        private readonly long _duration;
+        private readonly string _srcTask;
+        private readonly List<String> _taskList;
 
         public TransferTimeForm()
         {
             InitializeComponent();
         }
 
-        public TransferTimeForm(List<String> _taskList, string _srcTask, long _duration)
+        public TransferTimeForm(List<String> taskList, string srcTask, long duration)
         {
             InitializeComponent();
-            taskList = _taskList;
-            srcTask = _srcTask;
-            duration = _duration;
+            _taskList = taskList;
+            _srcTask = srcTask;
+            _duration = duration;
         }
 
         public string DestinationTask
         {
-            get 
-            {
-                return comboBoxTransferTimeTo.Text;
-            }
+            get { return comboBoxTransferTimeTo.Text; }
         }
 
-        private void TransferTimeForm_Load(object sender, EventArgs e)
+        private void TransferTimeFormLoad(object sender, EventArgs e)
         {
-            label1.Text += "(" + duration + " Minute";
-            label1.Text += duration == 1 ? "):" : "n):";
-            foreach (var _task in taskList)
-            {
-                if (!_task.Equals(srcTask))
-                    comboBoxTransferTimeTo.Items.Add(_task);
-            }
+            label1.Text += "(" + _duration + " Minute";
+            label1.Text += _duration == 1 ? "):" : "n):";
+            foreach (var task in _taskList.Where(task => !task.Equals(_srcTask)))
+                comboBoxTransferTimeTo.Items.Add(task);
+
             comboBoxTransferTimeTo.Text = comboBoxTransferTimeTo.Items[0].ToString();
             if (comboBoxTransferTimeTo.Items.Count == 1)
                 comboBoxTransferTimeTo.Enabled = false;
         }
 
-        private void TransferTimeForm_KeyPress(object sender, KeyPressEventArgs e)
+        private void TransferTimeFormKeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
             {
-                this.DialogResult = DialogResult.Yes;
-                this.Close();
+                DialogResult = DialogResult.Yes;
+                Close();
             }
-            if (e.KeyChar == 27)
-            {
-                this.DialogResult = DialogResult.No;
-                this.Close();
-            }
+            if (e.KeyChar != 27) return;
+            DialogResult = DialogResult.No;
+            Close();
         }
     }
 }

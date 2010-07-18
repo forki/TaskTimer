@@ -117,8 +117,8 @@
             this.Name = "CorrectBookedTimeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Task Timer";
-            this.Load += new System.EventHandler(this.CorrectBookedTimeForm_Load);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CorrectBookedTimeForm_KeyPress);
+            this.Load += new System.EventHandler(this.CorrectBookedTimeFormLoad);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CorrectBookedTimeFormKeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCorrection)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

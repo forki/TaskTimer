@@ -8,13 +8,13 @@ namespace TaskTimer
     {
         public Task(string taskName)
         {
-            Taskname = taskName;
+            Name = taskName;
             TimeEntries = new List<TimeEntry>();
         }
 
         public List<TimeEntry> TimeEntries { get; set; }
 
-        public string Taskname { get; set; }
+        public string Name { get; set; }
 
         public bool IsActive { get; private set; }
 
@@ -24,7 +24,7 @@ namespace TaskTimer
         {
             get
             {
-                long minutes = TimeDifference/60;
+                var minutes = TimeDifference/60;
                 if (TimeDifference%60 > 0)
                     minutes++;
                 return minutes;
@@ -42,7 +42,9 @@ namespace TaskTimer
 
         public override bool Equals(object obj)
         {
-            return Taskname.Equals(((Task) obj).Taskname);
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            return obj.GetType() == typeof (Task) && Equals((Task) obj);
         }
 
         public void Start()
@@ -60,17 +62,14 @@ namespace TaskTimer
 
         public long DurationInSeconds()
         {
-            long seconds = TimeEntries.Sum(timeEntry => timeEntry.DurationInSeconds());
-            long duration = seconds + TimeDifference;
-            if (duration > 0)
-                return duration;
-            return 0;
+            var seconds = TimeEntries.Sum(timeEntry => timeEntry.DurationInSeconds());
+            return Math.Max(seconds + TimeDifference, 0);
         }
 
         public long DurationInMinutes()
         {
-            long seconds = DurationInSeconds();
-            long minutes = seconds/60;
+            var seconds = DurationInSeconds();
+            var minutes = seconds/60;
             if (seconds%60 > 0)
                 minutes++;
             return minutes;
@@ -78,20 +77,17 @@ namespace TaskTimer
 
         public long DurationInSeconds(DateTime date)
         {
-            long seconds =
+            var seconds =
                 TimeEntries
                     .Where(timeEntry => timeEntry.Start.Date.Equals(date.Date) || timeEntry.Stop.Date.Equals(date.Date))
                     .Sum(timeEntry => timeEntry.DurationInSeconds());
-            long duration = seconds + TimeDifference;
-            if (duration > 0)
-                return duration;
-            return 0;
+            return Math.Max(seconds + TimeDifference, 0);
         }
 
         public long DurationInMinutes(DateTime date)
         {
-            long seconds = DurationInSeconds(date);
-            long minutes = seconds/60;
+            var seconds = DurationInSeconds(date);
+            var minutes = seconds/60;
             if (seconds%60 > 0)
                 minutes++;
             return minutes;
@@ -107,6 +103,18 @@ namespace TaskTimer
         public void AddMinutes(long minutes)
         {
             AddSeconds(minutes*60);
+        }
+
+        public bool Equals(Task other)
+        {
+            if (ReferenceEquals(null, other)) return false;
+            if (ReferenceEquals(this, other)) return true;
+            return Equals(other.Name, Name);
+        }
+
+        public override int GetHashCode()
+        {
+            return (Name != null ? Name.GetHashCode() : 0);
         }
     }
 }

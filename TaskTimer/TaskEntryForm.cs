@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace TaskTimer
 {
@@ -19,30 +12,30 @@ namespace TaskTimer
         public TaskEntryForm(string caption, string taskname)
         {
             InitializeComponent();
-            this.Text = caption;
+            SetCaptions(caption, taskname);
+        }
+
+        private void SetCaptions(string caption, string taskname)
+        {
+            Text = caption;
             textBoxTaskName.Text = taskname;
         }
 
         public string Taskname
         {
-            get
-            {
-                return textBoxTaskName.Text;
-            }
+            get { return textBoxTaskName.Text; }
         }
 
-        private void TaskEntryForm_KeyPress(object sender, KeyPressEventArgs e)
+        private void TaskEntryFormKeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
             {
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                DialogResult = DialogResult.OK;
+                Close();
             }
-            if (e.KeyChar == 27)
-            {
-                this.DialogResult = DialogResult.Cancel;
-                this.Close();
-            }
+            if (e.KeyChar != 27) return;
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
 }

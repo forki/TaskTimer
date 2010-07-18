@@ -1,32 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
+﻿using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 
 namespace TaskTimer
 {
-    partial class AboutBox : Form
+    internal partial class AboutBox : Form
     {
+        private readonly Assembly _executingAssembly = Assembly.GetExecutingAssembly();
+
         public AboutBox()
         {
             InitializeComponent();
-            this.Text = String.Format("Über {0}", AssemblyTitle);
-            this.labelProductName.Text = AssemblyProduct;
-            var _filetime = System.IO.File.GetLastWriteTime(Application.ExecutablePath);
-            this.labelVersion.Text = String.Format("Version {0}" +
-                " Build " +
-                _filetime.Year + "." + 
-                _filetime.Month.ToString().PadLeft(2, '0') + "." +
-                _filetime.Day.ToString().PadLeft(2, '0') + "." +
-                _filetime.Hour.ToString().PadLeft(2, '0') + "." +
-                _filetime.Minute.ToString().PadLeft(2, '0')
-                , /*AssemblyVersion*/Application.ProductVersion);
-            this.labelCopyright.Text = AssemblyCopyright;
-            this.labelCompanyName.Text = AssemblyCompany;
-            //this.textBoxDescription.Text = AssemblyDescription;
+            SetVersionData();
+        }
+
+        private void SetVersionData()
+        {
+            Text = string.Format("Über {0}", AssemblyTitle);
+            labelProductName.Text = AssemblyProduct;
+            var filetime = File.GetLastWriteTime(Application.ExecutablePath);
+            labelVersion.Text =
+                string.Format("Version {0} Build {1}.{2}.{3}.{4}.{5}",
+                              Application.ProductVersion,
+                              filetime.Year,
+                              filetime.Month.ToString().PadLeft(2, '0'),
+                              filetime.Day.ToString().PadLeft(2, '0'),
+                              filetime.Hour.ToString().PadLeft(2, '0'),
+                              filetime.Minute.ToString().PadLeft(2, '0'));
+            labelCopyright.Text = AssemblyCopyright;
+            labelCompanyName.Text = AssemblyCompany;
         }
 
         #region Assembly Attribute Accessors
@@ -35,37 +37,35 @@ namespace TaskTimer
         {
             get
             {
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+                var attributes = _executingAssembly.GetCustomAttributes(typeof (AssemblyTitleAttribute),
+                                                                        false);
                 if (attributes.Length > 0)
                 {
-                    AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
+                    var titleAttribute = (AssemblyTitleAttribute) attributes[0];
                     if (titleAttribute.Title != "")
                     {
                         return titleAttribute.Title;
                     }
                 }
-                return System.IO.Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().CodeBase);
+                return Path.GetFileNameWithoutExtension(_executingAssembly.CodeBase);
             }
         }
 
         public string AssemblyVersion
         {
-            get
-            {
-                return Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            }
+            get { return _executingAssembly.GetName().Version.ToString(); }
         }
 
         public string AssemblyDescription
         {
             get
             {
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
+                var attributes = _executingAssembly.GetCustomAttributes(typeof (AssemblyDescriptionAttribute), false);
                 if (attributes.Length == 0)
                 {
                     return "";
                 }
-                return ((AssemblyDescriptionAttribute)attributes[0]).Description;
+                return ((AssemblyDescriptionAttribute) attributes[0]).Description;
             }
         }
 
@@ -73,12 +73,12 @@ namespace TaskTimer
         {
             get
             {
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyProductAttribute), false);
+                var attributes = _executingAssembly.GetCustomAttributes(typeof (AssemblyProductAttribute), false);
                 if (attributes.Length == 0)
                 {
                     return "";
                 }
-                return ((AssemblyProductAttribute)attributes[0]).Product;
+                return ((AssemblyProductAttribute) attributes[0]).Product;
             }
         }
 
@@ -86,12 +86,12 @@ namespace TaskTimer
         {
             get
             {
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
+                var attributes = _executingAssembly.GetCustomAttributes(typeof (AssemblyCopyrightAttribute), false);
                 if (attributes.Length == 0)
                 {
                     return "";
                 }
-                return ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
+                return ((AssemblyCopyrightAttribute) attributes[0]).Copyright;
             }
         }
 
@@ -99,14 +99,16 @@ namespace TaskTimer
         {
             get
             {
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
+                var attributes = _executingAssembly.GetCustomAttributes(typeof (AssemblyCompanyAttribute),
+                                                                        false);
                 if (attributes.Length == 0)
                 {
                     return "";
                 }
-                return ((AssemblyCompanyAttribute)attributes[0]).Company;
+                return ((AssemblyCompanyAttribute) attributes[0]).Company;
             }
         }
+
         #endregion
     }
 }

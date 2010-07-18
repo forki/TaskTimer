@@ -93,7 +93,7 @@
             this.buttonOK.TabIndex = 19;
             this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
-            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            this.buttonOK.Click += new System.EventHandler(this.ButtonOkClick);
             // 
             // buttonCancel
             // 
@@ -145,7 +145,7 @@
             this.checkBoxQuittingMessage.TabIndex = 8;
             this.checkBoxQuittingMessage.Text = "Feierabend-Meldung";
             this.checkBoxQuittingMessage.UseVisualStyleBackColor = true;
-            this.checkBoxQuittingMessage.CheckedChanged += new System.EventHandler(this.checkBoxQuittingMessage_CheckedChanged);
+            this.checkBoxQuittingMessage.CheckedChanged += new System.EventHandler(this.CheckBoxQuittingMessageCheckedChanged);
             // 
             // label3
             // 
@@ -179,7 +179,7 @@
             this.buttonTestQuittingMessage.TabIndex = 10;
             this.buttonTestQuittingMessage.Text = "Test";
             this.buttonTestQuittingMessage.UseVisualStyleBackColor = true;
-            this.buttonTestQuittingMessage.Click += new System.EventHandler(this.buttonTestQuittingMessage_Click);
+            this.buttonTestQuittingMessage.Click += new System.EventHandler(this.ButtonTestQuittingMessageClick);
             // 
             // label4
             // 
@@ -273,7 +273,7 @@
             this.checkBoxUseBATTTime.TabIndex = 5;
             this.checkBoxUseBATTTime.Text = "BATT";
             this.checkBoxUseBATTTime.UseVisualStyleBackColor = true;
-            this.checkBoxUseBATTTime.CheckedChanged += new System.EventHandler(this.checkBoxUseBATTTime_CheckedChanged);
+            this.checkBoxUseBATTTime.CheckedChanged += new System.EventHandler(this.CheckBoxUseBattTimeCheckedChanged);
             // 
             // checkBoxSaveOnStop
             // 
@@ -316,8 +316,8 @@
             this.Name = "ConfigForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Konfiguration";
-            this.Load += new System.EventHandler(this.ConfigForm_Load);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ConfigForm_KeyPress);
+            this.Load += new System.EventHandler(this.ConfigFormLoad);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ConfigFormKeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOffsetRight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownAutoHideOffset)).EndInit();

@@ -86,8 +86,8 @@
             this.Name = "TransferTimeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Task Timer";
-            this.Load += new System.EventHandler(this.TransferTimeForm_Load);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TransferTimeForm_KeyPress);
+            this.Load += new System.EventHandler(this.TransferTimeFormLoad);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TransferTimeFormKeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

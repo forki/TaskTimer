@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Collections;
 
 namespace TaskTimer
 {
-    class TaskList
+    internal class TaskList
     {
         public TaskList()
         {
@@ -20,39 +19,26 @@ namespace TaskTimer
             Tasks.Add(new Task(taskName));
         }
 
-        public Task Get(string taskName)
+        public Task GetByName(string taskName)
         {
-            for (int i = 0; i < Tasks.Count; i++)
-            {
-                if (Tasks[i].Taskname.Equals(taskName))
-                    return Tasks[i];            
-            }
-            return null;
+            return Tasks.FirstOrDefault(t => t.Name.Equals(taskName));
         }
 
         public bool Contains(string taskName)
         {
-            return Tasks.Contains(new Task(taskName));
+            return Tasks.Where(task => task.Name == taskName).Any();
         }
 
-        public bool Delete(string taskName)
+        public bool RemoveByName(string taskName)
+        {
+            return Remove(GetByName(taskName));
+        }
+
+        public bool Remove(Task task)
         {
             try
             {
-                Tasks.Remove(Get(taskName));
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-        }
-
-        public bool Delete(Task _task)
-        {
-            try
-            {
-                Tasks.Remove(_task);
+                Tasks.Remove(task);
                 return true;
             }
             catch (Exception)
@@ -73,8 +59,9 @@ namespace TaskTimer
             {
                 Tasks[Tasks.IndexOf(new Task(taskName))].Stop();
             }
-            catch (Exception)
+            catch (Exception exception)
             {
+                Trace.WriteLine(exception.Message);
             }
         }
     }

@@ -86,7 +86,7 @@
             this.Name = "TaskEntryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Task umbenennen";
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TaskEntryForm_KeyPress);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TaskEntryFormKeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 
